@@ -20,7 +20,7 @@ Plusieurs onglets seront prévus pour différentes vues à sovoir :
 
 On prévoit également d'autres fonctionnalités :
 - Sauvegarde des entrées - **sous forme de fichier (structure et format à voir ultérieurement)**
-- Sauvegade des goupes - **sous forme de fichier (structure et format à voir ultérieurement)**
+- Sauvegade des groupes - **sous forme de fichier (structure et format à voir ultérieurement)**
 
 
 <br> <br>
