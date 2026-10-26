@@ -1,5 +1,5 @@
 # Fichier de creation et options d'un participant
-
+from datetime import *
 
 ##########################################################################
 ##      CATEGORIE D'AGE ET DE POIDS (EN FONCTION DU GENRE) - BANK       ##
@@ -12,19 +12,19 @@ age_class = [
 ]
 
 weights_F = [
-    [-28, -32, -36, -40, -44, -48, -52, -57, -63, +63], # Categorie de poids Benjamines : B
-    [-36, -40, -44, -48, -52, -57, -63, -70, +70], # Categorie de poids Minimes : MI
-    [-40, -44, -48, -52, -57, -63, -70, +70], # Categorie de poids Cadettes : C
-    [-44, -48, -52, -57, -63, -70, -78, +78], # Categorie de poids Juniors : J
-    [-48, -52, -57, -63, -70, -78, +78], # Categorie de poids Seniors/Veterans : S/M?
+    [28, 32, 36, 40, 44, 48, 52, 57, 63], # Categorie de poids Benjamines : B
+    [36, 40, 44, 48, 52, 57, 63, 70], # Categorie de poids Minimes : M
+    [40, 44, 48, 52, 57, 63, 70], # Categorie de poids Cadettes : C
+    [44, 48, 52, 57, 63, 70, 78], # Categorie de poids Juniors : J
+    [48, 52, 57, 63, 70, 78], # Categorie de poids Seniors/Veterans : S/V?
 ]
 
 weights_M = [
-    [-26, -30, -34, -38, -42, -46, -50, -55, -60, -66, +66], # Categorie de poids Benjamins : B
-    [-34, -38, -42, -46, -50, -60, -66, -73, -81, -81, +81], # Categorie de poids Minimes : MI
-    [-46, -50, -55, -60, -66, -73, -81, -90, +90], # Categorie de poids Cadets : C
-    [-55, -60, -66, -73, -81, -90, -100, +100], # Categorie de poids Juniors : J
-    [-60, -66, -73, -81, -90, -100, +100], # Categorie de poids Seniors/Veterans : S/M?
+    [26, 30, 34, 38, 42, 46, 50, 55, 60, 66], # Categorie de poids Benjamins : B
+    [34, 38, 42, 46, 50, 60, 66, 73, 81, 81], # Categorie de poids Minimes : MI
+    [46, 50, 55, 60, 66, 73, 81, 90], # Categorie de poids Cadets : C
+    [55, 60, 66, 73, 81, 90, 100], # Categorie de poids Juniors : J
+    [60, 66, 73, 81, 90, 100], # Categorie de poids Seniors/Veterans : S/M?
 ]
 
 # Table de tous les participants --- Pas l'ideal, mais on verra
@@ -36,90 +36,50 @@ all_Participants = []
 ###########################################################
 
 class Participant :
-    
-    def __init__(self, name, fname, gender, category, wClass) :
+
+    def __init__(self, name = "nom", fname = "prenom", gender = "genre", birth = "annee de naissance", weight = "poids") :
         self = self
         self.nom = name.upper()
-        self.prenom = fname
+        self.prenom = fname.capitalize()
         self.genre = gender.upper()
-        self.categorie = category.upper()
-        self.poids = -1*wClass
+        self.annee = birth
+        self.poids = weight
 
-        # Ajout à la table de tous les participants - Ajout de l'adresse mémoire
-        all_Participants.append(self)
+        all_Participants.append(self)    # Ajout à la table de tous les participants - Ajout de l'adresse mémoire
 
-    def getName(self) : return self.nom
-    def getFName(self) : return self.prenom
-    def getGender(self) : return self.genre
+    def toString(self) : return f"Nouvelle inscription : {self.getName()} {self.getFName()} - {self.getGender()}.{self.getCategory()}.{self.getWeightClass()}"
+    def describe(self) : print(f"Nouvelle inscription : {self.getName()} {self.getFName()} - {self.getGender()}.{self.getCategory()}.{self.getWeightClass()}")
+    def getName(self) : return self.nom.upper()
+    def getFName(self) : return self.prenom.capitalize()
+    def getGender(self) : return self.genre.upper()
 
-    def getCategory(self) : return self.categorie   # AGE : ATTENTION - REFAITE
-    def getPositionClass(self) : return self.poids   # POIDS : ATTENTION - REFAITE
+    def getCategory(self) :
+        current_y = datetime.now().year
+        delta = current_y - self.annee
 
-    # Override - getCtageory(self) - AGE
-    def getAgeCategory(self) :
-        self.categorie.upper()
-        for i in (age_class) :
-            if self.getCategory() == i : return i
-            else : continue
-        return "[ERREUR ENTREE]"
+        if delta <= 5 : return "EJ"     # EJ
+        elif 6 <= delta <= 7 : return "MP"     # MP
+        elif 8 <= delta <= 9 : return "P"     # P
+        elif 10 <= delta <= 11 : return "B"     # B
+        elif 12 <= delta <= 13 : return "M"     # M
+        elif 14 <= delta <= 16 : return "C"     # C
+        elif 17 <= delta <= 19 : return "J"     # J
+        elif 20 <= delta <= 30 : return "S"     # S
 
-    def getWeightFeminine(self) :
-        if self.genre == 'F' :
-            if self.getCate() == "B":
-                for i in weights_F[0] :
-                    if i <= self.getClass() : return i
-                return weights_F[0][-1]
+        for i in range(11) :
+            if (30 + (i*5)) <= delta <= (35 + (i*5)) :
+                return f"M{1+i}"     # M1-M11
 
-            elif self.getCate() == "M":
-                for i in weights_F[1] :
-                    if i <= self.getClass() : return i
-                return weights_F[1][-1]
+    def getWeightClass(self) :
+        for i in range(len(age_class)) : # 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+            if age_class[i] == self.getCategory() : # B - M - C - J - S - V ---> wF/wM
+                if i >= 4 : i = 4
+                if self.getGender() == "F" :
+                    for j in range(len(weights_F)) :
+                        if self.poids <= weights_F[i][j] : return f"-{weights_F[i][j]}"
+                    return f"+{weights_F[i][j]}"
 
-            elif self.getCate() == "C":
-                for i in weights_F[2] :
-                    if i <= self.getClass() : return i
-                return weights_F[2][-1]
-
-            elif self.getCate() == "J":
-                for i in weights_F[3] :
-                    if i <= self.getClass() : return i
-                return weights_F[3][-1]
-
-            else :
-                for i in weights_F[4] :
-                    if i <= self.getClass() : return i
-                return weights_F[4][-1]
-
-        else : return "[ERREUR ENTRÉE]"
-
-    def getWeightMasculin(self) :
-        if self.genre == 'M' :
-            if self.getCate() == "B":
-                for i in weights_M[0] :
-                    if i <= self.getClass() : return i
-                return weights_M[0][-1]
-
-            elif self.getCate() == "M":
-                1+1
-                for i in weights_M[1] :
-                    if i <= self.getClass() : return i
-                return weights_M[1][-1]
-
-            elif self.getCate() == "C":
-                1+1
-                for i in weights_M[2] :
-                    if i <= self.getClass() : return i
-                return weights_M[2][-1]
-
-            elif self.getCate() == "J":
-                for i in weights_M[3] :
-                    if i <= self.getClass() : return i
-                return weights_M[3][-1]
-
-            else :
-                for i in weights_M[4] :
-                    if i <= self.getClass() : return i
-                return weights_M[4][-1]
-
-        else : return "[ERREUR ENTRÉE]"
-
+                else :
+                    for j in range(len(weights_M)) :
+                        if self.poids <= weights_M[i][j] : return f"-{weights_M[i][j]}"
+                    return f"+{weights_M[i][j]}"
