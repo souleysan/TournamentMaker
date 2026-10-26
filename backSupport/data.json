@@ -1,0 +1,21 @@
+[
+    {
+        "Nom" : "n",
+        "Prenom" : "f",
+        "Genre" : "g",
+        "Categorie d'age" : "c",
+        "Positionnement" : "p"
+    }, {
+        "Nom" : "n",
+        "Prenom" : "f",
+        "Genre" : "g",
+        "Categorie d'age" : "c",
+        "Positionnement" : "p"
+    }, {
+        "Nom" : "n",
+        "Prenom" : "f",
+        "Genre" : "g",
+        "Categorie d'age" : "c",
+        "Positionnement" : "p"
+    }
+]

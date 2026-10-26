@@ -14,4 +14,5 @@ Tableau de l'avancée du projet, pour un suivi plus simple par raport à l'arbre
 | 18.10.26 | 18.10.26 | Initialisation du ANALYSE.md | Dev | Rescencement des besoins (stucturels) du projet | Mis à jour régulièrement
 | 18.10.26 | 18.10.26 | Initialisation du gitignore | Dev | Mise en cache des fichiers/environnements sensibles |
 | 18.10.26 | 19.10.26 | Initialisation du fichier de classe Participants | AcceuilData | Création et options d'un participants | Gstion de leurs informations (Intégration + GUI)
-| 19.10.26 | ?.10.26 | Ajout des champs et filtres (/genres, /club) | AcceuilData | Création et options d'un participants | Gstion de leurs informations (Intégration + GUI)
+| 19.10.26 | 21.10.26 | Ajout des champs et filtres (/genres, /club) | AcceuilData | Création et options d'un participants | Gestion de leurs informations (Intégration + GUI)
+| 25.10.26 | 26.10.26 | Fichiers d'acceuil JSON + Correctifs Majuscule (participants) + manager.py | AcceuilData | Lecture et gestion des donnees totales | Gestion de leurs informations (Intégration + GUI)
