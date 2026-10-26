@@ -16,3 +16,4 @@ Tableau de l'avancée du projet, pour un suivi plus simple par raport à l'arbre
 | 18.10.26 | 19.10.26 | Initialisation du fichier de classe Participants | AcceuilData | Création et options d'un participants | Gstion de leurs informations (Intégration + GUI)
 | 19.10.26 | 21.10.26 | Ajout des champs et filtres (/genres, /club) | AcceuilData | Création et options d'un participants | Gestion de leurs informations (Intégration + GUI)
 | 25.10.26 | 26.10.26 | Fichiers d'acceuil JSON + Correctifs Majuscule (participants) + manager.py | AcceuilData | Lecture et gestion des donnees totales | Gestion de leurs informations (Intégration + GUI)
+| 26.10.26 | ??.10.26 | Controle inscription (script CI) | Formattage | Harmonisation des inscriptions (format Gal) | Integration de la pipeline de CI
