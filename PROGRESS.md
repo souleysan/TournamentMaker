@@ -19,3 +19,4 @@ Tableau de l'avancée du projet, pour un suivi plus simple par raport à l'arbre
 | 26.10.26 | 26.10.26 | Finalisation de tous les accesseurs + Correctifs categories (participants) | AcceuilData | Lecture et gestion des donnees totales | Gestion de leurs informations (Intégration + GUI)
 | 26.10.26 | 27.10.26 | Finalisation de tous les filtres | AcceuilData | Lecture et gestion des donnees totales | Gestion de leurs informations (Intégration + GUI)
 | 27.10.26 | 27.10.26 | Ajout accesseur/filtre, tri et recherche du champ "club" | AcceuilData | Lecture et gestion des donnees totales | Gestion de leurs informations (Intégration + GUI)
+| 27.10.26 | 28.10.26 | Ajout methode de tri des listes | AcceuilData | Lecture et gestion des donnees totales | Gestion de leurs informations (Intégration + GUI)

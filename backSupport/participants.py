@@ -114,9 +114,7 @@ class Participant :
         return weightClass_targeted
 
     def filterByClub(self, club) :
-        all_clubs = []
-        clubs = {}
-
+        all_clubs, clubs = [], {}
         for i in all_Participants :                     # Reperage et remplissage de tous les clubs
             if i.getClub() not in all_clubs :
                 all_clubs.append(i.getClub())
@@ -129,4 +127,13 @@ class Participant :
         for i in clubs.keys() :                         # Recherche et retour du club cible
             if i == club.upper() :
                 return clubs.get(i)
+
+    def sort(self, liste) :
+        for i in range(len(liste)):
+            i_min = i
+            for j in range(i + 1, len(liste)):
+                if liste[j] < liste[i_min]:
+                    i_min = j
+            liste[i], liste[i_min] = liste[i_min], liste[i]
+        return liste
 
