@@ -9,8 +9,6 @@ import participants
 
 
 json_path = "backSupport/data.json"
-json_reciever = "backSupport/recievePy.json"
-json_participants = "backSupport/data.json"
 
 
 class Manager :
@@ -18,18 +16,18 @@ class Manager :
         pass
 
 
-    def jsonToPy(self) :
+    def jsonToPy(self, file = "nom_du_Fichier_sans_extension") :
         with open(json_path) as datas :     # Independantiser le fichier de lecture
             data = json.loads(datas.read())
         return data
-    
-    def pyToJson(self, datas) :     # Independantiser le fichier d'ecriture
+
+    def pyToJson(self, datas = "donnees_a_ecrire", file = "nom_du_Fichier_sans_extension") :
         data = []
         data.append(datas)
-        with open(json_reciever, "w") as rec :
+        with open(f"backSupport/{file}.json", "w") as rec :
             json.dump(data, rec)
         
-    def addParticipant(self, name, fname, gender, category, wClass) :
+    def setParticipant(self, name, fname, gender, category, wClass) :
         data = {
             "Nom" : f"{name}",
             "Prenom" : f"{fname}",
