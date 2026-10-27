@@ -37,11 +37,12 @@ all_Participants = []
 
 class Participant :
 
-    def __init__(self, name = "nom", fname = "prenom", gender = "genre", birth = "annee de naissance", weight = "poids") :
+    def __init__(self, name = "nom", fname = "prenom", gender = "genre", club = "club", birth = "annee de naissance", weight = "poids") :
         self = self
         self.nom = name.upper()
         self.prenom = fname.capitalize()
         self.genre = gender.upper()
+        self.club = club.upper()
         self.annee = birth
         self.poids = weight
 
@@ -49,9 +50,10 @@ class Participant :
 
     def toString(self) : return f"Nouvelle inscription : {self.getName()} {self.getFName()} - {self.getGender()}.{self.getCategory()}.{self.getWeightClass()}"
     def describe(self) : print(f"Nouvelle inscription : {self.getName()} {self.getFName()} - {self.getGender()}.{self.getCategory()}.{self.getWeightClass()}")
-    def getName(self) : return self.nom.upper()
-    def getFName(self) : return self.prenom.capitalize()
-    def getGender(self) : return self.genre.upper()
+    def getName(self) : return self.nom
+    def getFName(self) : return self.prenom
+    def getGender(self) : return self.genre
+    def getClub(self) : return self.club
 
     def getCategory(self) :
         current_y = datetime.now().year
@@ -71,8 +73,8 @@ class Participant :
                 return f"M{1+i}"     # M1-M11
 
     def getWeightClass(self) :
-        for i in range(len(age_class)) : # 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
-            if age_class[i] == self.getCategory() : # B - M - C - J - S - V ---> wF/wM
+        for i in range(len(age_class)) :
+            if age_class[i] == self.getCategory() :
                 if i >= 4 : i = 4
                 if self.getGender() == "F" :
                     for j in range(len(weights_F)) :
@@ -110,3 +112,21 @@ class Participant :
             if i.getWeightClass() == weightClass :
                 weightClass_targeted.append(i)
         return weightClass_targeted
+
+    def filterByClub(self, club) :
+        all_clubs = []
+        clubs = {}
+
+        for i in all_Participants :                     # Reperage et remplissage de tous les clubs
+            if i.getClub() not in all_clubs :
+                all_clubs.append(i.getClub())
+        for i in all_clubs :                            # Initialisation des tables de participant par club, dans le dico des clubs
+            clubs[i] = []
+        for i in clubs.keys() :                         # Remplissage des tables de participants par clubs, en appelant les cles du dico
+            for j in all_Participants :
+                if i == j.getClub() :
+                    clubs.get(i).append(j)
+        for i in clubs.keys() :                         # Recherche et retour du club cible
+            if i == club.upper() :
+                return clubs.get(i)
+
