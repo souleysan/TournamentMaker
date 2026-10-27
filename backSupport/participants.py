@@ -83,3 +83,30 @@ class Participant :
                     for j in range(len(weights_M)) :
                         if self.poids <= weights_M[i][j] : return f"-{weights_M[i][j]}"
                     return f"+{weights_M[i][j]}"
+
+
+############################################
+##      TRI ET FILTRES PAR CRITERES       ##
+############################################
+
+
+    def filterByGender(self, gender) :
+        gender_targeted = []
+        for i in all_Participants :
+            if i.getGender() == gender :
+                gender_targeted.append(i)
+        return gender_targeted
+
+    def filterByCategory(self, cate) :
+        category_targeted = []
+        for i in all_Participants :
+            if i.getCategory() == cate :
+                category_targeted.append(i)
+        return category_targeted
+
+    def filterByWeightClass(self, weightClass) :
+        weightClass_targeted = []
+        for i in all_Participants :
+            if i.getWeightClass() == weightClass :
+                weightClass_targeted.append(i)
+        return weightClass_targeted
