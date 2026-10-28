@@ -27,11 +27,13 @@ class Manager :
         with open(f"backSupport/{file}.json", "w") as rec :
             json.dump(data, rec)
         
-    def setParticipant(self, name, fname, gender, category, wClass) :
+    def setParticipant(self, name, fname, gender, club, category, wClass) :
+        new_particiant = participants.Participant(name, fname, gender, club, category, wClass)
         data = {
             "Nom" : f"{name}",
             "Prenom" : f"{fname}",
             "Genre" : f"{gender}",
+            "Club" : f"{club}",
             "Categorie d'age" : f"{category}",
             "Positionnement" : f"{wClass}",
         }; return data
