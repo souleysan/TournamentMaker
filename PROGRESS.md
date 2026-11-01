@@ -20,4 +20,4 @@ Tableau de l'avancée du projet, pour un suivi plus simple par raport à l'arbre
 | 26.10.26 | 27.10.26 | Finalisation de tous les filtres | AcceuilData | Lecture et gestion des donnees totales | Gestion de leurs informations (Intégration + GUI)
 | 27.10.26 | 27.10.26 | Ajout accesseur/filtre, tri et recherche du champ "club" | AcceuilData | Lecture et gestion des donnees totales | Gestion de leurs informations (Intégration + GUI)
 | 27.10.26 | 28.10.26 | Ajout methode de tri des listes | AcceuilData | Lecture et gestion des donnees totales | Gestion de leurs informations (Intégration + GUI)
-| 26.10.26 | ??.10.26 | Controle inscription (script CI) | Formattage | Harmonisationdes inscriptions (format Gal) | Integration de lapipeline de CI
+| 26.10.26 | 2.11.26 | Controle inscription (script CI) | Formattage | Harmonisation des inscriptions (format General) | Integration de la pipeline de CI
