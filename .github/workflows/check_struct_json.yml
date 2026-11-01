@@ -1,0 +1,23 @@
+name: Controle des entrees json
+
+on: 
+  push:
+  pull_request:
+  workflow_dispatch: 
+
+
+jobs:
+  check_json_structure:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Recuperation du code
+        uses: actions/checkout@v4
+
+      - name: Installation Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Verification syntaxe JSON
+        run: python ci/scriptFormJSON.py
