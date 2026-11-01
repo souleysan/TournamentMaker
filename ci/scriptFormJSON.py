@@ -1,10 +1,13 @@
 import json
+from pathlib import Path
+
+BASE = Path(__file__).resolve().parent
 
 errors_raised = []
 
 
 def check_struct(file = "nom_du_fichier") :
-    with open(f"{file}.json", "r", encoding = "utf-8") as js :
+    with open(file, "r", encoding = "utf-8") as js :
         data = json.loads(js.read())
         entries_expected = ["Nom", "Prenom", "Genre", "Club", "Categorie", "Positionnement"]
 
@@ -22,7 +25,7 @@ def check_errors() :
     print("-----------------------------------------------------")
 
 def scripting() :
-    check_struct("../backSupport/data")
+    check_struct(BASE.parent / "backSupport" / "data.json")
     check_errors()
 
 
